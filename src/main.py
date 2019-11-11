@@ -9,7 +9,7 @@ import json
 import os
 import requests
 import re
-import getDatos
+import Datos
 
 def recibeConfig():
     parser = argparse.ArgumentParser(description='Consumo de aguacate')
@@ -40,7 +40,7 @@ def main():
     print("Week {}".format(fecha))
     print("Region {}".format(region))
     
-    info_list=getDatos(fecha,region)
+    info_list=Datos.getDatos(fecha,region)
     print(info_list)
     print("Avg price of that week:{}".format(info_list[0]))
     print("Total Volume sold that week:{}".format(info_list[1]))
