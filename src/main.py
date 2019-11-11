@@ -9,17 +9,21 @@ import json
 import os
 import requests
 import re
-import Datos
+import datos
 
 def recibeConfig():
     parser = argparse.ArgumentParser(description='Consumo de aguacate')
-    parser.add_argument('--Date',
-                        help='Semana que quieres observar: YYYY-MM-DD',
-                        default="2015-01-04"
+    parser.add_argument('--Year',
+                        help='Año que quieres observar (YYYY)',
+                        default="2015"
                         )
     parser.add_argument('--Region',
                         help='Region donde ha sido la venta de aguacates.',
                         default="Atlanta"
+                        )
+    parser.add_argument('--Type',
+                        help='Tipo de aguacate (conventional/organic)',
+                        default="organic"
                         )
 
     args = parser.parse_args()
@@ -35,17 +39,19 @@ def main():
     config = recibeConfig()
     
     # PASO 2 - imprimir datos
-    fecha=config.Date
+    year=config.Year
     region=config.Region
-    print("Week {}".format(fecha))
+    type_c_o=config.Type
+    print("Year {}".format(year))
     print("Region {}".format(region))
-    
-    info_list=Datos.getDatos(fecha,region)
-    print(info_list)
+    print("Type {}".format(type_c_o))
+    info_list=datos.getDatos(year,region,type_c_o)
+    #print(info_list)
     print("Avg price of that week:{}".format(info_list[0]))
     print("Total Volume sold that week:{}".format(info_list[1]))
-    #df = getDatos(config.url)
-    #df_clean = cleanDf(df)
+    print("Address of a supermarket in {}:{}".format(region,info_list[2]))
+    print("Name of supermarket:{}".format(info_list[3]))
+
 
 if __name__=="__main__":
     main()
