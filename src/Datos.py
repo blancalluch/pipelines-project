@@ -15,11 +15,6 @@ def getDatos(year,region,type_c_o):
 
     grouped_regions=cleaning.groupingData(df_merged)
     
-    #imprimir graficas
-    pdf.creaPDF(grouped_regions,region,type_c_o)
-    #plotting.imprimeavg(grouped_regions,region,type_c_o)
-    #plotting.imprimetot(grouped_regions,region,type_c_o)
-    
     gr=grouped_regions.loc[region,type_c_o,int(year)]
     data=[]
 
@@ -32,6 +27,10 @@ def getDatos(year,region,type_c_o):
     #super market
     data.append(gr[3])
     #print(data)
+    #imprimir graficas
+    pdf.creaPDF(grouped_regions,year,region,type_c_o,data)
+    #plotting.imprimeavg(grouped_regions,region,type_c_o)
+    #plotting.imprimetot(grouped_regions,region,type_c_o)
     return data
 
 def datosDeApi():

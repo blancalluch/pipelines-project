@@ -10,9 +10,10 @@ def imprimeavg(grouped_regions,region,type_c_o):
     plt.title('{} Conventional Avocados'.format(region), fontsize=16, fontweight=0, color='Red')
     plt.xlabel("Years")
     plt.ylabel("Average Price")
-    plt.savefig('../output/averageprice{}.png'.format(region))
+    path_avg='../output/averageprice{}.png'.format(region)
+    plt.savefig(path_avg)
 
-    return
+    return path_avg
 
 def imprimetot(grouped_regions,region,type_c_o):
     '''
@@ -23,7 +24,9 @@ def imprimetot(grouped_regions,region,type_c_o):
     plt.title('{} Conventional Avocados'.format(region), fontsize=16, fontweight=0, color='Red')
     plt.xlabel("Years")
     plt.ylabel("Total Volume")
-    plt.savefig('../output/totalvolume{}.png'.format(region))
-    return
+    path_tot='../output/totalvolume{}.png'.format(region)
+    plt.savefig(path_tot)
+    
+    return path_tot
 
 
